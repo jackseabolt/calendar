@@ -11,7 +11,7 @@ export class Day extends React.Component {
     }
     render() {
         let slots = this.props.day.slots.map((slot, idx) => (
-            <Slot key={idx} slot={slot} />
+            <Slot key={idx} slot={slot} day={this.props.day.day} />
         )); 
         return (
             <section onClick={() => this.handleClick()} className="Day">

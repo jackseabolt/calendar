@@ -2,7 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Dropdown from 'react-dropdown';  
 import { Transition } from 'react-transition-group';  
-import { toggleModal, setModalContent, addEvent, setSelectedTime, setSelectedDay, setSelectedTitle, deleteEvent } from '../../actions/main';  
+import { 
+    toggleModal, 
+    setModalContent, 
+    addEvent, 
+    setSelectedTime, 
+    setSelectedDay, 
+    setSelectedTitle, 
+    deleteEvent, 
+    storeImage, 
+    setSelectedType
+} from '../../actions/main';  
 import './Modal.css'; 
 import 'react-dropdown/style.css'
 
@@ -13,8 +23,7 @@ export class Modal extends React.Component {
             titleError: null, 
             timeError: null, 
             typeError: null, 
-            dayError: null, 
-            eventType: null
+            dayError: null
        }
     }
 
@@ -23,6 +32,7 @@ export class Modal extends React.Component {
     }
 
     handleToggleEdit() {
+        this.props.dispatch(storeImage()); 
         this.props.dispatch(setModalContent('edit')); 
     }
 
@@ -36,38 +46,72 @@ export class Modal extends React.Component {
         this.props.dispatch(setModalContent(null)); 
     }
 
+  
+
+    handleErrors() {
+        if(!this.props.selectedTitle) {
+            this.setState({ titleError: "Please provide a title for your event" }); 
+        } 
+        else {
+            this.setState({ titleError: null }); 
+        }
+        if (!this.props.selectedDay) {
+            this.setState({ dayError: "Please select a day for your event" }); 
+        } 
+        else {
+            this.setState({ dayError: null }); 
+        }
+        if (!this.props.selectedTime) {
+            this.setState({ timeError: "Please select a time for your event" }); 
+        } 
+        else {
+            this.setState({ timeError: null }); 
+        }
+        if (!this.state.eventType) {
+            this.setState({ typeError: "Please provide a type for your event" }); 
+        }
+        else {
+            this.setState({ typeError: null }); 
+        } 
+    }
+
+    handleEdit(e) {
+        e.preventDefault(); 
+        // check if all fields are present
+        if(this.props.selectedTitle && this.props.selectedTime && this.props.selectedDay && this.props.selectedType) {
+            // check if new version differs from original
+            if(this.props.selectedTitle !== this.props.originalImage.title || 
+                this.props.selectedTime !== this.props.originalImage.time || 
+                this.props.selectedDay !== this.props.originalImage.day || 
+                this.props.selectedType !== this.props.originalImage.eventType 
+            ) {
+                // delete original
+                this.props.dispatch(deleteEvent(this.props.originalImage.day, this.props.originalImage.time))
+                // add new
+                this.props.dispatch(addEvent(this.props.selectedTitle, this.props.selectedTime, this.props.selectedDay, this.props.selectedType)); 
+                this.props.dispatch(toggleModal());
+                this.props.dispatch(setModalContent(null)); 
+            } 
+            else {
+                // close and don't change anything
+                this.props.dispatch(toggleModal());
+                this.props.dispatch(setModalContent(null)); 
+            }
+        }
+        else {
+           this.handleErrors(); 
+        }
+    }
+
     handleSubmit(e) {
         e.preventDefault(); 
-        if(this.props.selectedTitle && this.props.selectedTime && this.props.selectedDay && this.state.eventType) {
-            this.props.dispatch(addEvent(this.props.selectedTitle, this.props.selectedTime, this.props.selectedDay, this.state.eventType)); 
+        if(this.props.selectedTitle && this.props.selectedTime && this.props.selectedDay && this.props.selectedType) {
+            this.props.dispatch(addEvent(this.props.selectedTitle, this.props.selectedTime, this.props.selectedDay, this.props.selectedType)); 
             this.props.dispatch(toggleModal());
             this.props.dispatch(setModalContent(null)); 
         }
         else {
-            if(!this.props.selectedTitle) {
-                this.setState({ titleError: "Please provide a title for your event" }); 
-            } 
-            else {
-                this.setState({ titleError: null }); 
-            }
-            if (!this.props.selectedDay) {
-                this.setState({ dayError: "Please select a day for your event" }); 
-            } 
-            else {
-                this.setState({ dayError: null }); 
-            }
-            if (!this.props.selectedTime) {
-                this.setState({ timeError: "Please select a time for your event" }); 
-            } 
-            else {
-                this.setState({ timeError: null }); 
-            }
-            if (!this.state.eventType) {
-                this.setState({ typeError: "Please provide a day for your event" }); 
-            }
-            else {
-                this.setState({ typeError: null }); 
-            } 
+           this.handleErrors(); 
         }
     }
     
@@ -116,8 +160,8 @@ export class Modal extends React.Component {
                 <Dropdown 
                     className="dropdown" 
                     options={["Meeting", "Trip", "Call", "Appointment", "Event"]} 
-                    onChange={e => this.setState({ eventType: e.value })} 
-                    value={this.state.eventType}
+                    onChange={e => this.props.dispatch(setSelectedType(e.value))} 
+                    value={this.props.selectedType}
                     placeholder="Type of Event" id="type"
                 />
                 <p className="form-error">{this.state.typeError}</p>
@@ -159,7 +203,7 @@ export class Modal extends React.Component {
             </div>
         }
         else if(this.props.modalContent === 'edit') {
-            content = <form onSubmit={e => this.handleSubmit(e)}>
+            content = <form onSubmit={e => this.handleEdit(e)}>
                 <h2>Update Record</h2>
                 <input 
                     className="modal-input" 
@@ -173,8 +217,8 @@ export class Modal extends React.Component {
                 <Dropdown 
                     className="dropdown" 
                     options={["Meeting", "Trip", "Call", "Appointment", "Event"]} 
-                    onChange={e => this.setState({ eventType: e.value })} 
-                    value={this.state.eventType}
+                    onChange={e => this.props.dispatch(setSelectedType(e.value))} 
+                    value={this.props.selectedType}
                     placeholder="Type of Event" id="type"
                 />
                 <p className="form-error">{this.state.typeError}</p>
@@ -223,7 +267,8 @@ const mapStateToProps = state => ({
     selectedTime: state.selectedTime, 
     selectedDay: state.selectedDay, 
     selectedTitle: state.selectedTitle, 
-    selectedType: state.selectedType
+    selectedType: state.selectedType, 
+    originalImage: state.originalImage
 }); 
 
 export default connect(mapStateToProps)(Modal); 

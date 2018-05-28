@@ -33,8 +33,14 @@ export const setSelectedType = eventType => ({
     eventType
 }); 
 
+export const STORE_IMAGE = 'STORE_IMAGE'; 
+export const storeImage = () => ({
+    type: STORE_IMAGE
+}); 
+
 export const ADD_EVENT = 'ADD_EVENT'; 
 export const addEvent = (title, time, day, eventType) => dispatch => {
+    console.log("Add event fired")
     return fetch(`http://localhost:8080/event`, {
         method: 'POST', 
         body: JSON.stringify({

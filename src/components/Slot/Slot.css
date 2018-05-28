@@ -18,3 +18,25 @@
     font-family: arial; 
     color: #ebebeb; 
 }
+
+.Slot-weekend {
+    height: calc(6.25vh - 1px); 
+    width: 100%; 
+    border-bottom: 1px solid #ebebeb; 
+    display: flex;  
+    overflow: hidden; 
+    transition: 0.5s; 
+    cursor: pointer;
+    background-color: rgb(155, 155, 155);  
+}
+
+.Slot-weekend:hover {
+    background-color: #ebebeb; 
+}
+
+.Slot-weekend .time {
+    font-size: 12px; 
+    margin: 5px; 
+    font-family: arial; 
+    color: #ebebeb; 
+}
