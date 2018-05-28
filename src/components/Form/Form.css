@@ -1,0 +1,6 @@
+.form-backdrop {
+    width: 100vh; 
+    height: 100vh; 
+    position: static; 
+    color: black; 
+}

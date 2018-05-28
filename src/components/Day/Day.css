@@ -1,0 +1,21 @@
+.Day { 
+    margin-top: 80px; 
+    width: calc(14.3% - 1px); 
+    color: gray; 
+    border-right: 1px solid rgb(141, 141, 141);  
+}
+
+.Day-header {
+    height: 6.25vh; 
+    width: 101%;  
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+    color: white; 
+    overflow: hidden; 
+    transition: 0.5s;
+    font-family: arial;  
+    cursor: pointer; 
+    background-color: rgb(71, 71, 71); 
+}
+  
