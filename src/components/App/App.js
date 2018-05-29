@@ -8,13 +8,18 @@ import {
   setModalContent, 
   setSelectedTime, 
   setSelectedDay, 
-  setSelectedTitle 
+  setSelectedTitle, 
+  focusDay 
 } from '../../actions/main';  
 import './App.css';
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(getAllDays()); 
+  }
+
+  handleUnfocus() {
+    this.props.dispatch(focusDay(null)); 
   }
 
   handleModal() {
@@ -41,7 +46,7 @@ class App extends Component {
       return (
         <div className="App">
           <header>
-              <h2 className="logo" >CalendarApp</h2>
+              <h2 className="logo" onClick={() => this.handleUnfocus()}>CalendarApp</h2>
               <button className="new-event-button" onClick={() => this.handleModal()}>Add Event</button>
           </header>
           {modal}
@@ -55,7 +60,7 @@ class App extends Component {
       return (
         <div className="App">
           <header>
-              <h2 className="logo" >CalendarApp</h2>
+              <h2 className="logo">CalendarApp</h2>
               <button className="new-event-button" onClick={() => this.handleModal()}>Add Event</button>
           </header>
           {modal}

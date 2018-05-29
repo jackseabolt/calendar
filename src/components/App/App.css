@@ -37,6 +37,7 @@ main {
   float: left; 
   margin: 0px; 
   font-size: 20px; 
+  cursor: pointer; 
 }
 
 @media screen and (max-width: 800px) {

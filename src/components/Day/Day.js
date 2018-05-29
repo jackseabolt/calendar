@@ -11,23 +11,43 @@ export class Day extends React.Component {
     }
 
     handleFocus() {
-        this.props.dispatch(focusDay(this.props.day.day))
+        this.props.dispatch(focusDay(this.props.day.day));
     }
-
+    
+    handleUnfocus() {
+        this.props.dispatch(focusDay(null));
+    }
+   
     render() {
-        console.log(this.props)
+
         let slots = this.props.day.slots.map((slot, idx) => (
             <Slot key={idx} slot={slot} day={this.props.day.day} />
         )); 
-        return (
-            <section onClick={() => this.handleClick()} className="Day">
-                <section onClick={() => this.handleFocus()} className="Day-header">
-                    <h5>{this.props.day.day}</h5>
-                </section>
-                {slots}
-            </section> 
-        ); 
+        if(this.props.focusDay) {
+            return (
+                <section onClick={() => this.handleClick()} className="Day">
+                    <section onClick={() => this.handleUnfocus()} className="Day-header">
+                        <h5>{this.props.day.day}</h5>
+                    </section>
+                    {slots}
+                </section> 
+            )
+        }
+        else {
+            return (
+                <section onClick={() => this.handleClick()} className="Day">
+                    <section onClick={() => this.handleFocus()} className="Day-header">
+                        <h5>{this.props.day.day}</h5>
+                    </section>
+                    {slots}
+                </section> 
+            ); 
+        }
     }
 }
 
-export default connect()(Day); 
+const mapStateToProps = state => ({
+    focusDay: state.focusDay
+})
+
+export default connect(mapStateToProps)(Day); 

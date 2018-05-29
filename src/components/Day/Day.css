@@ -20,6 +20,11 @@
     transition: 0.5s; 
 }
 
+.far {
+    position: absolute !important;  
+    left: 5px; 
+}
+
 .Day-header:hover {
     background-color: rgb(48, 48, 48);
 }
