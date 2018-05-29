@@ -1,14 +1,13 @@
 import { 
-    TOGGLE_MODAL, toggleModal,
-    SET_MODAL_CONTENT, setModalContent, 
-    ADD_EVENT, addEvent, 
-    SET_DAYS, setDays, 
-    SET_SELECTED_TIME, setSelectedTime, 
-    SET_SELECTED_DAY, setSelectedDay, 
-    SET_SELECTED_TITLE, setSelectedTitle,
-    SET_SELECTED_TYPE, setSelectedType, 
-    STORE_IMAGE, storeImage, 
-    FOCUS_DAY, focusDay
+    TOGGLE_MODAL,
+    SET_MODAL_CONTENT, 
+    SET_DAYS, 
+    SET_SELECTED_TIME, 
+    SET_SELECTED_DAY, 
+    SET_SELECTED_TITLE, 
+    SET_SELECTED_TYPE, 
+    STORE_IMAGE,
+    FOCUS_DAY
 } from '../actions/main'; 
 
 
@@ -101,8 +100,6 @@ export const initialState = {
         }
     ]
 }
-
-// {EVENT: "meeting", class: "meeting"}
 
 
 export const reducer = (state=initialState, action) => {
