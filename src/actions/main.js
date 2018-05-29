@@ -78,7 +78,7 @@ export const deleteEvent = (day, time) => dispatch => {
 
 export const GET_ALL_DAYS = 'GET_ALL_DAYS'; 
 export const getAllDays = () => dispatch => {
-    return fetch(`http://localhost:8080/days`)
+    return fetch(`https://seabolt-calendar-api.herokuapp.com/days`)
         .then(res => {
             if(!res.ok) {
                 return Promise.reject(res.statusText)
