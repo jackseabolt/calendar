@@ -12,6 +12,7 @@ class Event extends React.Component {
     }
 
     render() {
+        // transition styles
         const duration = 300; 
    
         const transitionStyles = {

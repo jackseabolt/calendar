@@ -1,61 +1,21 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'; 
-import Day from '../Day'; 
-import Modal from '../Modal';
-import Header from '../Header'; 
-import { 
-  getAllDays
-} from '../../actions/main';  
-import './App.css';
+import Home from '../Home';  
+import Calendar from '../Calendar'; 
+import {Route} from 'react-router-dom';
 
+export default class App extends Component {
 
-class App extends Component {
-  
-  componentDidMount() {
-    this.props.dispatch(getAllDays()); 
-  }
+    render() {
 
-  render() {
-
-    // controls week vs. day display
-    let days; 
-    if(this.props.focusDay){
-      const dayData = this.props.days.find(day => day.day === this.props.focusDay); 
-  
-      days = <main className="main-focus">
-              <Day day={dayData} />
-             </main>
+        return (
+            <div>
+                <Route exact path='/' component={Home} />
+                <Route exact path='/calendar' component={Calendar} /> 
+            </div>
+        );
     }
-    else {
-      let daySet = this.props.days.map((day, idx) => (
-        <Day key={idx} day={day} />
-      )); 
-
-      days = <main className="main">
-              {daySet}
-            </main>
-    }
-
-    // displays modal if it is activated
-    let modal; 
-    if(this.props.modalActivated) {
-      modal = <Modal />
-    }
-
-    return (
-      <div className="App">
-        <Header />
-        {modal}
-        {days}
-      </div>
-    );
-  }
 }
 
-const mapStateToProps = state => ({
-  days: state.days, 
-  modalActivated: state.modalActivated, 
-  focusDay: state.focusDay
-}); 
 
-export default connect(mapStateToProps)(App);
+
+
