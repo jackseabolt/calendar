@@ -49,3 +49,22 @@
         height: 40px; 
     }
 }
+
+
+@media screen and (min-width: 900px) {
+    .Slot-weekend {
+        height: calc(9vh - 1px); 
+    }
+    .Slot {
+            height: calc(9vh - 1px); 
+    }
+}
+
+@media screen and (min-width: 1350px) {
+    .Slot-weekend {
+        height: calc(13vh - 1px); 
+    }
+    .Slot {
+            height: calc(13vh - 1px); 
+    }
+}
