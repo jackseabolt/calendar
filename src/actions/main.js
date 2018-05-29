@@ -41,7 +41,7 @@ export const storeImage = () => ({
 export const ADD_EVENT = 'ADD_EVENT'; 
 export const addEvent = (title, time, day, eventType) => dispatch => {
     console.log("Add event fired")
-    return fetch(`http://localhost:8080/event`, {
+    return fetch(`https://seabolt-calendar-api.herokuapp.com/event`, {
         method: 'POST', 
         body: JSON.stringify({
             title, 
@@ -61,7 +61,7 @@ export const addEvent = (title, time, day, eventType) => dispatch => {
 
 export const DELETE_EVENT = 'DELETE_EVENT'; 
 export const deleteEvent = (day, time) => dispatch => {
-    return fetch(`http://localhost:8080/delete-event`, {
+    return fetch(`https://seabolt-calendar-api.herokuapp.com/delete-event`, {
         method: 'POST', 
         body: JSON.stringify({
             day, time
