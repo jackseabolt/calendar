@@ -7,7 +7,8 @@ import {
     SET_SELECTED_DAY, setSelectedDay, 
     SET_SELECTED_TITLE, setSelectedTitle,
     SET_SELECTED_TYPE, setSelectedType, 
-    STORE_IMAGE, storeImage
+    STORE_IMAGE, storeImage, 
+    FOCUS_DAY, focusDay
 } from '../actions/main'; 
 
 
@@ -18,7 +19,8 @@ export const initialState = {
     selectedDay: null,
     selectedTitle: null, 
     selectedType: null,
-    originalImage: null,  
+    originalImage: null, 
+    focusDay: null,  
     days: [
         {
             day: 'Sunday', 
@@ -148,7 +150,12 @@ export const reducer = (state=initialState, action) => {
                 title: state.selectedTitle, 
                 eventType: state.selectedType
             }
-        })
+        });
+    }
+    else if (action.type === FOCUS_DAY) {
+        return Object.assign({}, state, {
+            focusDay: action.day
+        }); 
     }
     return state; 
 }

@@ -29,28 +29,49 @@ class App extends Component {
     const days = this.props.days.map((day, idx) => (
       <Day key={idx} day={day} />
     )); 
+
+    const dayData = this.props.days.find(day => day.day === this.props.focusDay) 
+
     let modal; 
     if(this.props.modalActivated) {
       modal = <Modal />
     }
-    return (
-      <div className="App">
-        <header>
-            <h2 className="logo" >CalendarApp</h2>
-            <button className="new-event-button" onClick={() => this.handleModal()}>Add Event</button>
-        </header>
-        {modal}
-        <main >
-          {days}
-        </main>
-      </div>
-    );
+
+    if(this.props.focusDay) {
+      return (
+        <div className="App">
+          <header>
+              <h2 className="logo" >CalendarApp</h2>
+              <button className="new-event-button" onClick={() => this.handleModal()}>Add Event</button>
+          </header>
+          {modal}
+          <main >
+           <Day day={dayData} />
+          </main>
+        </div>
+      );
+    }
+    else {
+      return (
+        <div className="App">
+          <header>
+              <h2 className="logo" >CalendarApp</h2>
+              <button className="new-event-button" onClick={() => this.handleModal()}>Add Event</button>
+          </header>
+          {modal}
+          <main >
+            {days}
+          </main>
+        </div>
+      );
+    }
   }
 }
 
 const mapStateToProps = state => ({
   days: state.days, 
-  modalActivated: state.modalActivated
+  modalActivated: state.modalActivated, 
+  focusDay: state.focusDay
 }); 
 
 export default connect(mapStateToProps)(App);

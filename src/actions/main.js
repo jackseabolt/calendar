@@ -38,6 +38,12 @@ export const storeImage = () => ({
     type: STORE_IMAGE
 }); 
 
+export const FOCUS_DAY = 'FOCUS_DAY'; 
+export const focusDay = day => ({
+    type: FOCUS_DAY, 
+    day
+}); 
+
 export const ADD_EVENT = 'ADD_EVENT'; 
 export const addEvent = (title, time, day, eventType) => dispatch => {
     console.log("Add event fired")
