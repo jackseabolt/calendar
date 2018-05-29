@@ -7,7 +7,7 @@
 
 .Day-header {
     height: 6.25vh; 
-    width: 101%;  
+    width: 100%;  
     display: flex;
     justify-content: center; 
     align-items: center;   

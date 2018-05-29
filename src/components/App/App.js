@@ -50,7 +50,7 @@ class App extends Component {
               <button className="new-event-button" onClick={() => this.handleModal()}>Add Event</button>
           </header>
           {modal}
-          <main >
+          <main className="main-focus">
            <Day day={dayData} />
           </main>
         </div>
@@ -64,7 +64,7 @@ class App extends Component {
               <button className="new-event-button" onClick={() => this.handleModal()}>Add Event</button>
           </header>
           {modal}
-          <main >
+          <main className="main">
             {days}
           </main>
         </div>
