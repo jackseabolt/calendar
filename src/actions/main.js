@@ -1,3 +1,5 @@
+import { REACT_APP_API_URL } from '../config'; 
+
 export const TOGGLE_MODAL = 'TOGGLE_MODAL'; 
 export const toggleModal = () => ({
     type: TOGGLE_MODAL
@@ -46,7 +48,7 @@ export const focusDay = day => ({
 
 export const ADD_EVENT = 'ADD_EVENT'; 
 export const addEvent = (title, time, day, eventType) => dispatch => {
-    return fetch(`https://seabolt-calendar-api.herokuapp.com/event`, {
+    return fetch(`${REACT_APP_API_URL}/event`, {
         method: 'POST', 
         body: JSON.stringify({
             title, 
@@ -66,7 +68,7 @@ export const addEvent = (title, time, day, eventType) => dispatch => {
 
 export const DELETE_EVENT = 'DELETE_EVENT'; 
 export const deleteEvent = (day, time) => dispatch => {
-    return fetch(`https://seabolt-calendar-api.herokuapp.com/delete-event`, {
+    return fetch(`${REACT_APP_API_URL}/delete-event`, {
         method: 'POST', 
         body: JSON.stringify({
             day, time
@@ -83,7 +85,7 @@ export const deleteEvent = (day, time) => dispatch => {
 
 export const GET_ALL_DAYS = 'GET_ALL_DAYS'; 
 export const getAllDays = () => dispatch => {
-    return fetch(`https://seabolt-calendar-api.herokuapp.com/days`)
+    return fetch(`${REACT_APP_API_URL}/days`)
         .then(res => {
             if(!res.ok) {
                 return Promise.reject(res.statusText)
