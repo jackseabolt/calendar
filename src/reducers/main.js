@@ -1,5 +1,6 @@
 import { 
     TOGGLE_MODAL,
+    TOGGLE_ABOUT,
     SET_MODAL_CONTENT, 
     SET_DAYS, 
     SET_SELECTED_TIME, 
@@ -19,7 +20,8 @@ export const initialState = {
     selectedTitle: null, 
     selectedType: null,
     originalImage: null, 
-    focusDay: null,  
+    focusDay: null, 
+    aboutActivated: false, 
     days: [
         {
             day: 'Sunday', 
@@ -152,6 +154,11 @@ export const reducer = (state=initialState, action) => {
     else if (action.type === FOCUS_DAY) {
         return Object.assign({}, state, {
             focusDay: action.day
+        }); 
+    }
+    else if(action.type === TOGGLE_ABOUT) {
+        return Object.assign({}, state, {
+            aboutActivated: !state.aboutActivated
         }); 
     }
     return state; 

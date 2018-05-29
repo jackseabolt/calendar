@@ -1,8 +1,8 @@
 
 .home {
     padding: 140px 100px; 
-    background: linear-gradient(to top right, rgb(17, 19, 26), rgb(54, 61, 158));
-    height: 100vh; 
+    background: linear-gradient(to top right, rgb(17, 19, 26), rgb(63, 69, 148));
+    height: calc(100vh - 280px); 
     color: white; 
     display: flex; 
     justify-content: center; 
@@ -16,15 +16,11 @@
     line-height: 100%; 
 }
 
-.home-logo-container {
-    width: 445px; 
-    margin: 0px auto; 
-}
 
 .home-container {
     text-align: center; 
     position: relative; 
-    top: -160px;
+    top: -30px;
     transition: opacity 1000ms ease-in-out;  
 }
 
@@ -52,6 +48,7 @@
     .home {
         padding: 100px 0px; 
         display: flex; 
+        height: calc(100vh - 200px); 
     }
     .home-logo {
         font-size: 50px; 

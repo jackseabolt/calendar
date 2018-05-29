@@ -5,6 +5,11 @@ export const toggleModal = () => ({
     type: TOGGLE_MODAL
 }); 
 
+export const TOGGLE_ABOUT = 'TOGGLE_ABOUT'; 
+export const toggleAbout = () => ({
+    type: TOGGLE_ABOUT
+}); 
+
 export const SET_MODAL_CONTENT = 'SET_MODAL_CONTENT'; 
 export const setModalContent = content => ({
     type: SET_MODAL_CONTENT, 
