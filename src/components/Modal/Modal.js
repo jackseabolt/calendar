@@ -11,7 +11,6 @@ import {
     setSelectedTime, 
     setSelectedDay, 
     setSelectedTitle, 
-    deleteEvent, 
     storeImage, 
     setSelectedType
 } from '../../actions/main';  
@@ -36,11 +35,6 @@ export class Modal extends React.Component {
     handleToggleEdit() {
         this.props.dispatch(storeImage()); 
         this.props.dispatch(setModalContent('edit')); 
-    }
-
-    handleDelete() {
-        this.props.dispatch(deleteEvent(this.props.selectedDay, this.props.selectedTime)); 
-        this.handleClose(); 
     }
 
     handleClose() {
