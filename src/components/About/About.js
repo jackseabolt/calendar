@@ -49,8 +49,8 @@ export class About extends React.Component {
                             </div>
                                 <h2 className="about-title"><i className="fas fa-info-circle"></i>&nbsp;&nbsp;About</h2>
                                 <p className="about-p">CalendarApp is an application for organizing your daily activities. 
-                                Users can create different events to display on their calendar. Organize your events by
-                                type and they will be color-coded on the display. Users may toggle between week and day 
+                                Users can create different events to display on their calendar. Events are organized by 
+                                type and will be color-coded on the display. Users may toggle between week and day 
                                 views by clicking the label for the day they wish to view.  
                                 <br />
                                 <br />
