@@ -2,7 +2,8 @@
     margin-top: 80px; 
     width: 100%; 
     color: gray; 
-    border-right: 1px solid rgb(141, 141, 141);  
+    /* border-right: 1px solid rgb(141, 141, 141);   */
+    border-right: 1px solid rgb(71, 71, 71); 
 }
 
 .Day-header {
