@@ -40,3 +40,12 @@
     font-family: arial; 
     color: #ebebeb; 
 }
+
+@media screen and (max-width: 800px) {
+    .Slot {
+        height: 40px; 
+    }
+    .Slot-weekend {
+        height: 40px; 
+    }
+}
