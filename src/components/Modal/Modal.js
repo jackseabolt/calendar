@@ -4,6 +4,7 @@ import Dropdown from 'react-dropdown';
 import { Transition } from 'react-transition-group'; 
 import FormNew from '../FormNew';  
 import FormDelete from '../FormDelete'; 
+import FormRead from '../FormRead'; 
 import { 
     toggleModal, 
     setModalContent, 
@@ -12,7 +13,8 @@ import {
     setSelectedDay, 
     setSelectedTitle, 
     storeImage, 
-    setSelectedType
+    setSelectedType, 
+    deleteEvent
 } from '../../actions/main';  
 import './Modal.css'; 
 import 'react-dropdown/style.css'
@@ -134,15 +136,7 @@ export class Modal extends React.Component {
             content = <FormDelete />
         } 
         else if(this.props.modalContent === 'read') {
-            content = <div>
-                <h2>Record Details</h2>
-                <p><strong>Title: </strong>{this.props.selectedTitle}</p>
-                <p><strong>Type: </strong>{this.props.selectedType}</p>
-                <p><strong>Day: </strong>{this.props.selectedDay}</p>
-                <p><strong>Time: </strong>{this.props.selectedTime}</p>
-                <button onClick={() => this.handleToggleEdit()} className="modal-button-submit">Edit Event</button>
-                <button onClick={() => this.handleToggleDelete()} className="modal-button-delete">Delete Event</button>
-            </div>
+            content = <FormRead />
         }
         else if(this.props.modalContent === 'edit') {
             content = <form onSubmit={e => this.handleEdit(e)}>
