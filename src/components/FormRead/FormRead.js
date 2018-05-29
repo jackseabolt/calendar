@@ -28,7 +28,7 @@ export class FormRead extends React.Component {
                 <button onClick={() => this.handleToggleEdit()} className="modal-button-submit">Edit Event</button>
                 <button onClick={() => this.handleToggleDelete()} className="modal-button-delete">Delete Event</button>
             </div>
-        )      
+        );       
     }
 }
 
