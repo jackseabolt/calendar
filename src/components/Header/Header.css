@@ -1,0 +1,47 @@
+header {
+    position: fixed; 
+    top: 0px; 
+    background-color: black; 
+    padding: 22px 70px; 
+    width: calc(100% - 140px); 
+}
+
+.new-event-button {
+    padding: 10px 20px; 
+    color: white; 
+    background-color: rgb(59, 59, 59); 
+    border-radius: 3px; 
+    font-size: 14px; 
+    border: 0px; 
+    float: right; 
+    cursor: pointer; 
+    transition: 0.5s; 
+}
+
+.new-event-button:hover {
+    background-color: rgb(43, 43, 43); 
+}
+
+.logo {
+    font-family: 'Pacifico', cursive;
+    color: white; 
+    float: left; 
+    margin: 0px; 
+    font-size: 20px; 
+    cursor: pointer; 
+}
+
+@media screen and (max-width: 600px) {
+
+    header {
+        padding: 22px 30px; 
+        width: calc(100% - 60px); 
+    }
+}
+
+@media screen and (max-width: 290px) {
+    .new-event-button {
+        background-color: black; 
+        padding: 10px 0px; 
+    }
+}

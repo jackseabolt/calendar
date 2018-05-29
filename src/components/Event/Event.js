@@ -7,7 +7,6 @@ import './Event.css';
 class Event extends React.Component {
     
     handleClick() {
-        console.log(`HERE IS HANDLECLICK: ${this.props.event.type}`)
         this.props.dispatch(setSelectedType(this.props.event.eventType)); 
         this.props.dispatch(setSelectedTitle(this.props.event.title)); 
     }
