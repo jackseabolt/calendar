@@ -36,10 +36,13 @@ class App extends Component {
     return (
       <div className="App">
         <header>
+            <h2 className="logo" >CalendarApp</h2>
             <button className="new-event-button" onClick={() => this.handleModal()}>Add Event</button>
         </header>
         {modal}
-        {days}
+        <main >
+          {days}
+        </main>
       </div>
     );
   }

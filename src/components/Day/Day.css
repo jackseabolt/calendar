@@ -1,6 +1,6 @@
 .Day { 
     margin-top: 80px; 
-    width: calc(14.3% - 1px); 
+    width: 100%; 
     color: gray; 
     border-right: 1px solid rgb(141, 141, 141);  
 }

@@ -1,7 +1,10 @@
 .App {
   margin: 0px; 
-  padding: 0px;
-  display: flex;  
+  padding: 0px; 
+}
+
+main {
+  display: flex; 
 }
 
 .App header {
@@ -28,3 +31,22 @@
   background-color: rgb(43, 43, 43); 
 }
 
+.logo {
+  font-family: 'Pacifico', cursive;
+  color: white; 
+  float: left; 
+  margin: 0px; 
+  font-size: 20px; 
+}
+
+@media screen and (max-width: 800px) {
+  main {
+    width: 150%; 
+  }
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    width: 170%; 
+  }
+}
