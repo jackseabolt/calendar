@@ -46,7 +46,6 @@ export const focusDay = day => ({
 
 export const ADD_EVENT = 'ADD_EVENT'; 
 export const addEvent = (title, time, day, eventType) => dispatch => {
-    console.log("Add event fired")
     return fetch(`https://seabolt-calendar-api.herokuapp.com/event`, {
         method: 'POST', 
         body: JSON.stringify({
@@ -94,11 +93,11 @@ export const getAllDays = () => dispatch => {
         .then(data => {
             dispatch(setDays(data))
         })
-        .catch(err => console.error(err))
+        .catch(err => console.error(err));
 }
 
 export const SET_DAYS = 'SET_DAYS'; 
 export const setDays = days => ({
     type: SET_DAYS, 
     days
-})
+});

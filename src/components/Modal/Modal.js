@@ -1,7 +1,8 @@
 import React from 'react'; 
 import { connect } from 'react-redux';
 import Dropdown from 'react-dropdown';  
-import { Transition } from 'react-transition-group';  
+import { Transition } from 'react-transition-group'; 
+import FormNew from '../FormNew';  
 import { 
     toggleModal, 
     setModalContent, 
@@ -45,8 +46,6 @@ export class Modal extends React.Component {
         this.props.dispatch(toggleModal());
         this.props.dispatch(setModalContent(null)); 
     }
-
-  
 
     handleErrors() {
         if(!this.props.selectedTitle) {
@@ -102,18 +101,6 @@ export class Modal extends React.Component {
            this.handleErrors(); 
         }
     }
-
-    handleSubmit(e) {
-        e.preventDefault(); 
-        if(this.props.selectedTitle && this.props.selectedTime && this.props.selectedDay && this.props.selectedType) {
-            this.props.dispatch(addEvent(this.props.selectedTitle, this.props.selectedTime, this.props.selectedDay, this.props.selectedType)); 
-            this.props.dispatch(toggleModal());
-            this.props.dispatch(setModalContent(null)); 
-        }
-        else {
-           this.handleErrors(); 
-        }
-    }
     
     render() {  
 
@@ -146,43 +133,7 @@ export class Modal extends React.Component {
 
         let content; 
         if(this.props.modalContent === 'new') {
-            content = <form onSubmit={e => this.handleSubmit(e)}>
-                <h2>Add a New Event</h2>
-                <input 
-                    className="modal-input" 
-                    type="text" 
-                    placeholder="Event title" 
-                    value={this.props.selectedTitle ? this.props.selectedTitle : ''}
-                    ref="input"
-                    onChange={e => this.props.dispatch(setSelectedTitle(this.refs.input.value))}
-                />
-                <p className="form-error">{this.state.titleError}</p>
-                <Dropdown 
-                    className="dropdown" 
-                    options={["Meeting", "Trip", "Call", "Appointment", "Event"]} 
-                    onChange={e => this.props.dispatch(setSelectedType(e.value))} 
-                    value={this.props.selectedType}
-                    placeholder="Type of Event" id="type"
-                />
-                <p className="form-error">{this.state.typeError}</p>
-                <Dropdown 
-                    className="dropdown" 
-                    options={times} 
-                    onChange={e => this.props.dispatch(setSelectedTime(e.value))} 
-                    value={this.props.selectedTime}
-                    placeholder="Time of Event" id="type"
-                />
-                <p className="form-error">{this.state.timeError}</p>
-                <Dropdown 
-                    className="dropdown" 
-                    options={["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]} 
-                    onChange={e => this.props.dispatch(setSelectedDay(e.value))} 
-                    value={this.props.selectedDay}
-                    placeholder="Day of Event" id="type"
-                />
-                <p className="form-error">{this.state.dayError}</p>
-                <button className="modal-button-submit">Add Event</button>
-            </form>
+            content = <FormNew />
         }
         else if(this.props.modalContent === 'delete') {
             content = <div>
