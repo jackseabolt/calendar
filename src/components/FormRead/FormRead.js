@@ -1,7 +1,5 @@
 import React from 'react'; 
-import { connect } from 'react-redux'; 
-import FormNew from '../FormNew';  
-import FormDelete from '../FormDelete'; 
+import { connect } from 'react-redux';  
 import { 
     setModalContent,  
     storeImage
