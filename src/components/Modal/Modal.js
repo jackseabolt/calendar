@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Dropdown from 'react-dropdown';  
 import { Transition } from 'react-transition-group'; 
 import FormNew from '../FormNew';  
+import FormDelete from '../FormDelete'; 
 import { 
     toggleModal, 
     setModalContent, 
@@ -136,11 +137,7 @@ export class Modal extends React.Component {
             content = <FormNew />
         }
         else if(this.props.modalContent === 'delete') {
-            content = <div>
-                <br />
-                <h3>Are you sure you want to delete this record?</h3>
-                <button onClick={() => this.handleDelete()} className="modal-button-delete">Delete This Record</button>
-            </div>
+            content = <FormDelete />
         } 
         else if(this.props.modalContent === 'read') {
             content = <div>
